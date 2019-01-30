@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: abc-product-search
+
+  jmx:
+    enabled: false
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:abcproducts;DB_CLOSE_ON_EXIT=FALSE    
+    username: root
+    password: ""
+    createNamespace: true
+    initialSize: 10
+    maxTotal: 20
+    poolPreparedStatements: true
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      dialect: org.hibernate.dialect.H2Dialect
+      ddl-auto: create
+      format_sql: true  
+      show_sql: true
+
+  main:
+    allow-bean-definition-overriding: true
+
+  hibernate:
+    cache:  
+      use_second_level_cache: true
+      use_query_cache: true
+      region:
+        factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+    
+logging:
+  level:
+    root: DEBUG  
+
+    sun: 
+      rmi: WARN
+      
+    org:
+      hibernate: INFO
+      apache:
+        tomcat: WARN  
